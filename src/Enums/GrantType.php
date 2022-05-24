@@ -9,4 +9,6 @@ class GrantType
 	public const CLIENT_CREDENTIALS = 'client_credentials';
 
 	public const REFRESH_TOKEN = 'refresh_token';
+
+	public const PASSWORD = 'password';
 }

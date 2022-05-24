@@ -31,7 +31,7 @@ trait OAuthTrait
 		return self::OAUTH_BASE_URI.'authorize/?'.http_build_query($parameters);
 	}
 
-	public function getOAuthToken(?string $code = null, string $grantType = GrantType::AUTHORIZATION_CODE, array $scopes = []) : Result
+	public function getOAuthToken(?string $code = null, string $grantType = GrantType::AUTHORIZATION_CODE, array $scopes = [], array $additionalParameters = []) : Result
 	{
 		if ( !$clientId = $this->getClientId() ) {
 			throw new InvalidArgumentException('The OAuth request requires a client id to be set.');
@@ -40,11 +40,11 @@ trait OAuthTrait
 			throw new InvalidArgumentException('The OAuth request requires a client secret to be set.');
 		}
 
-		$parameters = [
+		$parameters = array_merge($additionalParameters, [
 			'grant_type' => $grantType,
 			'client_id' => $clientId,
 			'client_secret' => $clientSecret,
-		];
+		]);
 
 		if ( $grantType === GrantType::AUTHORIZATION_CODE ) {
 			$parameters['redirect_uri'] = $this->getRedirectUri();
