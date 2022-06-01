@@ -24,7 +24,7 @@ trait ClientCredentialsTrait
 		return config('derpierre65-id.client_credentials.cache');
 	}
 
-	protected function getClientCredentials() : ?AccessToken
+	public function getClientCredentials() : ?AccessToken
 	{
 		if ( $this->shouldCacheClientCredentials() && $token = $this->getCachedClientCredentialsToken() ) {
 			return $token;

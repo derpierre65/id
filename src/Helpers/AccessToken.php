@@ -16,7 +16,7 @@ class AccessToken implements Arrayable
 	/**
 	 * oauth refresh token to generate a new access token
 	 */
-	public string $refreshToken;
+	public ?string $refreshToken;
 
 	/**
 	 * access token will expire in expiresIn seconds.
@@ -36,9 +36,9 @@ class AccessToken implements Arrayable
 	public function __construct(array $data)
 	{
 		$this->accessToken = $data['access_token'];
-		$this->refreshToken = $data['refresh_token'];
 		$this->expiresIn = $data['expires_in'];
 		$this->tokenType = $data['token_type'];
+		$this->refreshToken = $data['refresh_token'] ?? null;
 		$this->expiresAt = $data['expires_at'] ?? now()->addSeconds($this->expiresIn);
 	}
 
