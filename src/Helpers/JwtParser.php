@@ -16,16 +16,22 @@ class JwtParser
 	/**
 	 * @throws AuthenticationException
 	 */
-	public function decode(Request $request) : stdClass
+	public function decode(Request $request, bool $throwException = true) : ?stdClass
 	{
 		JWT::$leeway = 60;
 
 		try {
 			return JWT::decode(
-				$request->bearerToken(), new Key($this->getOauthPublicKey(), self::ALLOWED_ALGORITHMS));
+				$request->bearerToken(),
+				new Key($this->getOauthPublicKey(), self::ALLOWED_ALGORITHMS)
+			);
 		} catch ( Throwable $exception ) {
-			throw new AuthenticationException();
+			if ( $throwException ) {
+				throw new AuthenticationException();
+			}
 		}
+
+		return null;
 	}
 
 	public function getOauthPublicKey() : string
