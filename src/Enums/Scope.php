@@ -4,18 +4,18 @@ namespace derpierre65\Id\Enums;
 
 class Scope
 {
-	/** allows /users/{user.id}  */
+	/** allows /users/{user}/  */
 	public const USER = 'user';
 
-	/** allows /users/{user.id} without email */
+	/** allows /users/{user}/ without email */
 	public const USER_READ = 'user:read';
 
-	/** enables /users/{user.id} to return an email */
-	public const USER_EMAIL = 'user:email';
+	/** enables /users/{user}/ to return an email */
+	public const USER_EMAIL = 'user:read:email';
 
-	/** allows /users/{user.id}/beta to return all beta clients */
-	public const USER_BETA = 'user:beta';
+	/** allows /users/{user}/betas/ to return all beta clients */
+	public const USER_BETA = 'user:read:beta';
 
-	/** allows /users/{user.id}/connections to return all user connections */
-	public const USER_CONNECTIONS = 'user:connections';
+	/** allows /users/{user}/connections/ to return all user connections */
+	public const USER_CONNECTIONS = 'user:read:connections';
 }
