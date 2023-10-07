@@ -14,7 +14,7 @@ class Result
 	/**
 	 * Query result data.
 	 */
-	public null|array|stdClass $data;
+	public null|array|stdClass $data = null;
 
 	/**
 	 * Status Code.
