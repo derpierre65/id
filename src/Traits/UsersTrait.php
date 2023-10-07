@@ -21,6 +21,6 @@ trait UsersTrait
 	 */
 	public function getAuthenticatedUser() : Result
 	{
-		return $this->get(self::BASE_URI.'users/@me');
+		return $this->get(self::BASE_URI.'/v1/users/@me');
 	}
 }

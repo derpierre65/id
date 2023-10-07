@@ -21,7 +21,7 @@ class Derpierre65Id
 
 	public const OAUTH_BASE_URI = 'https://id.derpierre65.dev/oauth2/';
 
-	public const BASE_URI = 'https://id.derpierre65.dev/api/';
+	public const BASE_URI = 'https://api.id.derpierre65.dev';
 
 	/**
 	 * Guzzle is used to make http requests.

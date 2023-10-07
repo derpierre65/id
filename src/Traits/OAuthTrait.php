@@ -64,7 +64,7 @@ trait OAuthTrait
 			$parameters['scope'] = $this->buildScopes($scopes);
 		}
 
-		return $this->json(self::BASE_URI.'oauth2/token', [], $parameters);
+		return $this->json(self::BASE_URI.'/oauth2/token', [], $parameters);
 	}
 
 	protected function buildScopes(array $scopes = []) : string
@@ -74,9 +74,6 @@ trait OAuthTrait
 
 	public function isAuthenticationUri(string $uri) : bool
 	{
-		return str_starts_with($uri, self::OAUTH_BASE_URI)
-		       || str_starts_with($uri, self::BASE_URI.'oauth2/')
-		       || str_starts_with($trimmedUri = ltrim($uri, '/'), 'oauth2/')
-		       || str_starts_with($trimmedUri, 'api/oauth2/');
+		return str_starts_with($uri, self::OAUTH_BASE_URI) || str_starts_with($uri, self::BASE_URI.'/oauth2');
 	}
 }
